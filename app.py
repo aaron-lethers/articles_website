@@ -70,6 +70,7 @@ def register():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
 	form = LoginForm(request.form)
+	# git comment
 
 	if request.method == 'POST':
 		# user posts form data -> compare form data to db
