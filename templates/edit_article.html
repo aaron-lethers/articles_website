@@ -1,0 +1,26 @@
+{% include 'layout.html' %}
+{% from "/includes/_formhelpers.html" import render_field %}
+
+
+{% block body %}
+	<br>
+
+	<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Edit Article {{id}}:</h1>
+
+      <form method='POST'>
+      	<div class="form-group">
+	      	<div>
+	  				{{ render_field(form.title, class="form-control") }}
+	  			</div>
+	  			<div class="form-group">
+	  				{{ render_field(form.body, class="form-control") }}	
+	  			</div>		
+  				<input type="submit" class="btn btn-primary pullright" style="float:right;" value="Submit"></input>
+  			</div>
+  		</form>
+
+    </div>
+  </div>
+{% endblock%}

@@ -6,15 +6,34 @@
 	<div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Dashboard: <small>Welcome {{ session['username'] }}</small></h1>
-      	<ul>
-      		{% for article in articles %}
-						<li>{{ article['title'] }}</li>
-					{% endfor %}
-      	</ul>
+		  <table class="table table-striped">
+	    	<tr>
+	    		<th>ID</th>
+	    		<th>Title</th>
+	    		<th>Author</th>
+	    		<th>Date</th>
+	    		<th></th>
+	    		<th></th>
+	    	</tr>
+	    	{% for article in articles %}
+	    		<tr>
+	    			<td>{{article.id}}</td>
+	    			<td>{{article.title}}</td>
+	    			<td>{{article.author}}</td>
+	    			<td>{{article.create_date}}</td>
+	    			<td><a href="edit_article/{{article['id']}}" class="btn btn-secondary pullright">Edit</a></td>
+	    			<td>
+	    				<form action="{{url_for('delete_article', id=article.id)}}" method="post">
+	    					<input type="hidden" name="_method" value="DELETE">
+	    					<input type="submit" value="Delete" class="btn btn-danger">
+	    				</form>
+	    			</td>
+	    		</tr>
+	    	{% endfor %}
+    	</table>	
+		  <a href="/create_article" class="btn btn-primary my-2">Create Article</a>  
     </div>
-  </div>
-  <div>
-  	<a href="/">Logout</a>
+
   </div>
 
 {% endblock %}

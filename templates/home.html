@@ -8,8 +8,10 @@
       <h1 class="jumbotron-heading">Home</h1>
       <p>This is a project for me to learn all about web development using Python Flask. This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
       <p>
-        <a href="/register" class="btn btn-primary my-2">Signup</a>
-        <a href="/login" class="btn btn-primary my-2">Login</a>
+        {% if not session['logged_in'] %}
+          <a href="/register" class="btn btn-success my-2">Register</a>
+          <a href="/login" class="btn btn-primary my-2">Login</a>
+        {% endif %}
       </p>
     </div>
     
